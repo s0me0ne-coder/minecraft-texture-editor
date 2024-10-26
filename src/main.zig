@@ -118,7 +118,11 @@ pub fn main() !void {
                         },
                         sdl2.SDLK_SPACE => {
                             sdl2.SDL_RenderPresent(renderer);
-                            err = sdl2.SDL_RenderFillRect(renderer, &cube1.rect);
+                            // snap the cube to the nearest multiple of the size of the cube1
+                            var cube2 = cube1;
+                            cube2.rect.x = @divFloor(cube1.rect.x,cube1.rect.w) * cube1.rect.w;
+                            cube2.rect.y = @divFloor(cube1.rect.y,cube1.rect.h) * cube1.rect.h;
+                            err = sdl2.SDL_RenderFillRect(renderer, &cube2.rect);
                             if (err != 0) {
                                 std.debug.print("{s}\n", .{sdl2.SDL_GetError()});
                                 return error.SDLRenderFillRectError;
