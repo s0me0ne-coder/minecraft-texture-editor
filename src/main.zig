@@ -59,7 +59,6 @@ pub fn main() !void {
         .h = 10,
     }, .color = chosen_color };
     while (!quit) {
-        sdl2.SDL_RenderPresent(renderer);
         while (sdl2.SDL_PollEvent(&event) != 0) {
             switch (event.type) {
                 sdl2.SDL_QUIT => {
@@ -121,7 +120,6 @@ pub fn main() !void {
                             }
                         },
                         sdl2.SDLK_SPACE => {
-                            sdl2.SDL_RenderPresent(renderer);
                             // snap the cube to the nearest multiple of the size of the cube1
                             // in other words which pixel is the user clicking
                             var cube2 = cube1;
@@ -132,22 +130,9 @@ pub fn main() !void {
                                 std.debug.print("{s}\n", .{sdl2.SDL_GetError()});
                                 return error.SDLRenderFillRectError;
                             }
-                            sdl2.SDL_RenderPresent(renderer);
                         },
                         sdl2.SDLK_r => {
-                            for (0..10) |_| {
-                                err = sdl2.SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-                                if (err != 0) {
-                                    std.debug.print("{s}\n", .{sdl2.SDL_GetError()});
-                                    return error.SDLSetRenderDrawColorError;
-                                }
-                                err = sdl2.SDL_RenderClear(renderer);
-                                if (err != 0) {
-                                    std.debug.print("{s}\n", .{sdl2.SDL_GetError()});
-                                    return error.SDLRenderClearError;
-                                }
-                                sdl2.SDL_RenderPresent(renderer);
-                            }
+                            
                         },
                         sdl2.SDLK_PLUS => {
                             SCALING_FACTOR += 1;        
