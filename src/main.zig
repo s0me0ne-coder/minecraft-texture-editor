@@ -120,9 +120,6 @@ pub fn main() !void {
                                 return error.SDLSetRenderDrawColorError;
                             }
                         },
-                        sdl2.SDLK_UP => {
-                            std.debug.print("UP!\n", .{});
-                        },
                         sdl2.SDLK_SPACE => {
                             sdl2.SDL_RenderPresent(renderer);
                             // snap the cube to the nearest multiple of the size of the cube1
