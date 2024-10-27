@@ -14,15 +14,16 @@ const sdl_error = error{
     SDLRenderClearError,
     SDLRendererSetVSyncError,
 };
-const WINDOW_X = 640;
-const WINDOW_Y = 480;
-
+const TEXTURE_SIZE = 16;
 const Cube = struct {
     rect: sdl2.SDL_Rect,
     color: sdl2.SDL_Color,
 };
 
 pub fn main() !void {
+    var SCALING_FACTOR:u8 = 10;
+    var WINDOW_X:u16 = TEXTURE_SIZE*SCALING_FACTOR;
+    var WINDOW_Y:u16 = WINDOW_X;
     const init_flags: c_uint = sdl2.SDL_INIT_EVERYTHING;
     var err: c_int = sdl2.SDL_Init(init_flags);
     if (err != 0) {
@@ -119,6 +120,7 @@ pub fn main() !void {
                         sdl2.SDLK_SPACE => {
                             sdl2.SDL_RenderPresent(renderer);
                             // snap the cube to the nearest multiple of the size of the cube1
+                            // in other words which pixel is the user clicking
                             var cube2 = cube1;
                             cube2.rect.x = @divFloor(cube1.rect.x,cube1.rect.w) * cube1.rect.w;
                             cube2.rect.y = @divFloor(cube1.rect.y,cube1.rect.h) * cube1.rect.h;
@@ -143,6 +145,12 @@ pub fn main() !void {
                                 }
                                 sdl2.SDL_RenderPresent(renderer);
                             }
+                        },
+                        sdl2.SDLK_PLUS => {
+                            SCALING_FACTOR += 1;        
+                            WINDOW_X = TEXTURE_SIZE*SCALING_FACTOR;
+                            WINDOW_Y = WINDOW_X;
+                            sdl2.SDL_SetWindowSize(window,WINDOW_X,WINDOW_Y);
                         },
                         else => {},
                     }
