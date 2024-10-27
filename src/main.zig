@@ -68,6 +68,60 @@ pub fn main() !void {
     var x: i32 = 0;
     var y: i32 = 0;
     var color: sdl2.SDL_Color = BACKGROUND_COLOR;
+    const color1 = sdl2.SDL_Color{
+        .r = 255,
+        .g = 0,
+        .b = 0,
+        .a = 255,
+    };
+    const color2 = sdl2.SDL_Color{
+        .r = 255,
+        .g = 127,
+        .b = 0,
+        .a = 255,
+    };
+    const color3 = sdl2.SDL_Color{
+        .r = 255,
+        .g = 255,
+        .b = 0,
+        .a = 255,
+    };
+    const color4 = sdl2.SDL_Color{
+        .r = 0,
+        .g = 255,
+        .b = 0,
+        .a = 255,
+    };
+    const color5 = sdl2.SDL_Color{
+        .r = 0,
+        .g = 0,
+        .b = 255,
+        .a = 255,
+    };
+    const color6 = sdl2.SDL_Color{
+        .r = 255,
+        .g = 0,
+        .b = 255,
+        .a = 255,
+    };
+    const color7 = sdl2.SDL_Color{
+        .r = 0,
+        .g = 0,
+        .b = 0,
+        .a = 255,
+    };
+    const color8 = sdl2.SDL_Color{
+        .r = 0,
+        .g = 0,
+        .b = 0,
+        .a = 255,
+    };
+    const color9 = sdl2.SDL_Color{
+        .r = 0,
+        .g = 0,
+        .b = 0,
+        .a = 255,
+    };
     while (!quit) {
         while (sdl2.SDL_PollEvent(&event) != 0) {
             switch (event.type) {
@@ -83,45 +137,36 @@ pub fn main() !void {
                     switch (event.key.keysym.sym) {
                         // red
                         sdl2.SDLK_1 => {
-                            color.r = 255;
-                            color.g = 0;
-                            color.b = 0;
-                            color.a = 255;
+                            color = color1;
                         },
                         // orange
                         sdl2.SDLK_2 => {
-                            color.r = 255;
-                            color.g = 127;
-                            color.b = 0;
-                            color.a = 255;
+                            color = color2;
                         },
                         // yellow
                         sdl2.SDLK_3 => {
-                            color.r = 255;
-                            color.g = 255;
-                            color.b = 0;
-                            color.a = 255;
+                            color = color3;
                         },
                         // green
                         sdl2.SDLK_4 => {
-                            color.r = 0;
-                            color.g = 255;
-                            color.b = 0;
-                            color.a = 255;
+                            color = color4;
                         },
                         // blue
                         sdl2.SDLK_5 => {
-                            color.r = 0;
-                            color.g = 0;
-                            color.b = 255;
-                            color.a = 255;
+                            color = color5;
                         },
                         // purple
                         sdl2.SDLK_6 => {
-                            color.r = 255;
-                            color.g = 0;
-                            color.b = 255;
-                            color.a = 255;
+                            color = color6;
+                        },
+                        sdl2.SDLK_7 => {
+                            color = color7;
+                        },
+                        sdl2.SDLK_8 => {
+                            color = color8;
+                        },
+                        sdl2.SDLK_9 => {
+                            color = color9;
                         },
                         // place a cube by coloring the one over the mouse cursor
                         sdl2.SDLK_SPACE => {
