@@ -72,6 +72,7 @@ pub fn main() !void {
                 },
                 sdl2.SDL_KEYDOWN => {
                     switch (event.key.keysym.sym) {
+                        // red
                         sdl2.SDLK_1 => {
                             err = sdl2.SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
                             if (err != 0) {
@@ -79,6 +80,7 @@ pub fn main() !void {
                                 return error.SDLSetRenderDrawColorError;
                             }
                         },
+                        // orange
                         sdl2.SDLK_2 => {
                             err = sdl2.SDL_SetRenderDrawColor(renderer, 255, 127, 0, 255);
                             if (err != 0) {
@@ -86,6 +88,7 @@ pub fn main() !void {
                                 return error.SDLSetRenderDrawColorError;
                             }
                         },
+                        // yellow
                         sdl2.SDLK_3 => {
                             err = sdl2.SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
                             if (err != 0) {
@@ -93,6 +96,7 @@ pub fn main() !void {
                                 return error.SDLSetRenderDrawColorError;
                             }
                         },
+                        // green
                         sdl2.SDLK_4 => {
                             err = sdl2.SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
                             if (err != 0) {
@@ -100,6 +104,7 @@ pub fn main() !void {
                                 return error.SDLSetRenderDrawColorError;
                             }
                         },
+                        // blue
                         sdl2.SDLK_5 => {
                             err = sdl2.SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
                             if (err != 0) {
@@ -107,6 +112,7 @@ pub fn main() !void {
                                 return error.SDLSetRenderDrawColorError;
                             }
                         },
+                        // purple
                         sdl2.SDLK_6 => {
                             err = sdl2.SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
                             if (err != 0) {
